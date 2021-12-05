@@ -1,0 +1,4 @@
+FROM httpd:2.4.51-alpine
+EXPOSE 6666
+ENTRYPOINT ["httpd"]
+CMD ["-D", "FOREGROUND"]

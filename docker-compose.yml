@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  apache:
+    build: './Apache'
+    restart: unless-stopped
+    ports:
+      - 6666:66
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - front
+      - back
+
+  php:
+    build: './PHP_server'
+    restart: unless-stopped
+    networks:
+      - back
+
+  mysql:
+    build: './MySQL'
+    networks:
+      - back
+
+networks:
+  front:
+  back:
